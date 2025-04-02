@@ -26,22 +26,6 @@ This project simulates classic CPU scheduling algorithms and visually represents
 ---
 
 ### 📂 **Project Structure**
-```
-cpu_scheduling_visualizer/
-├── algorithms/
-│   ├── fcfs.py
-│   ├── sjf.py
-│   ├── priority.py
-│   ├── round_robin.py
-├── utils/
-│   ├── gantt_chart.py
-│   ├── metrics.py
-├── data/
-│   └── sample_processes.csv
-├── main.py
-├── README.md
-```
-
 ---
 
 ### 📈 **Metrics Calculated**
