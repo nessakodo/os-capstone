@@ -25,9 +25,6 @@ Simulate and visualize how different CPU scheduling algorithms handle the same w
 
 ---
 
-
----
-
 ## How It Works
 
 1. Load a set of processes (from JSON or CSV)
@@ -78,15 +75,15 @@ pip install matplotlib numpy
 
 ## Deliverables
 
-[ ] Full Python source code (in this repo)
+[  ] Full Python source code (in this repo)
 
-[ ] Matplotlib-based visualization outputs
+[  ] Matplotlib-based visualization outputs
 
-[ ] Project Report (PDF – in /docs)
+[  ] Project Report (PDF – in /docs)
 
-[ ] Presentation Slides (PowerPoint – in /docs)
+[  ] Presentation Slides (PowerPoint – in /docs)
 
-[ ] References to recent scheduling research
+[  ] References to recent scheduling research
 
 ---
 
