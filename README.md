@@ -75,17 +75,14 @@ pip install matplotlib numpy
 
 ## Deliverables
 
-[  ] Full Python source code (in this repo)
+⬜️ Full Python source code (in this repo)
 
-[  ] Matplotlib-based visualization outputs
+⬜️ Matplotlib-based visualization outputs
 
-[  ] Project Report (PDF – in /docs)
+⬜️ Project Report (PDF – in /docs)
 
-[  ] Presentation Slides (PowerPoint – in /docs)
+⬜️ Presentation Slides (PowerPoint – in /docs)
 
-[  ] References to recent scheduling research
+⬜️ References to recent scheduling research (PDF - in /docs)
 
 ---
-
-## References & Research
-
