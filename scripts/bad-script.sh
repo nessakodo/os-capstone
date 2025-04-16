@@ -1,8 +1,5 @@
-# TODO: Define create_file_access_scenario() with sandboxed and unsandboxed processes
-
-# TODO: Define create_network_access_scenario()
-
-# TODO: Define create_privilege_escalation_scenario()
-
-# TODO: Return list of processes for each scenario
-
+# TODO: Simulate a pseudo-malicious script
+# - Try to read a protected file 
+# - Try to write to a system directory
+# - Attempt a network connection
+# - Optional: attempt privilege escalation 
