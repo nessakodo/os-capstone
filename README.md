@@ -16,10 +16,6 @@ To demonstrate the behavioral differences between sandboxed and non-sandboxed pr
 - Mohammad Besharat  
 - Matthew Ruediger  
 
-**Presentation Slides:** [Capstone Powerpoint](https://olucdenver-my.sharepoint.com/:p:/g/personal/vanessa_benavente_ucdenver_edu/EdDpQnrzFnlJigiEMT-agQ8B8_FfiwXYSOkmdRw0xIx8AA?e=jwRJB0)
-
-**Project Report:** [Research Report](https://docs.google.com/document/d/1F-AweAtG0pEalSz2Hs1eE6Vv7kvXwJZo6tNyZNBZ-HE/edit?tab=t.0)
-
 ---
 
 ## **Project Scope**  
@@ -78,11 +74,10 @@ We present visualizations, effectiveness scores, and architecture diagrams to co
 
 ## Deliverables
 
-⬜️ Full Python Source Code (in this repo)
+**Full Source Code** (in this repo)
 
-⬜️ Matplotlib-based Visualization Outputs
+**Matplotlib-based Visualization Outputs** (in /visuals)
 
-⬜️ Project Report and References (PDF in /report)[]
+**Presentation Slides:** [Capstone Powerpoint](https://olucdenver-my.sharepoint.com/:p:/g/personal/vanessa_benavente_ucdenver_edu/EdDpQnrzFnlJigiEMT-agQ8B8_FfiwXYSOkmdRw0xIx8AA?e=jwRJB0)
 
-⬜️ Presentation Slides (PowerPoint)[]
-
+**Project Report:** [Research Report](https://docs.google.com/document/d/1F-AweAtG0pEalSz2Hs1eE6Vv7kvXwJZo6tNyZNBZ-HE/edit?tab=t.0)
