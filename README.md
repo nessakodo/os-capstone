@@ -69,7 +69,7 @@ We present visualizations, effectiveness scores, and architecture diagrams to co
 
 **View Reslts**
 
-*Outputs will be saved to the /results/ folder for use in the final report and presentation.*
+*Outputs will be saved to the /visuals folder for use in the final report and presentation.*
 
 
 ## Deliverables
