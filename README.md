@@ -40,36 +40,49 @@ We present visualizations, effectiveness scores, and architecture diagrams to co
 - Python 3.x
 - Firejail
 
-### Installation
-**Clone the Repositry**
+### **Clone the Repositry**
 
    ```bash
    git clone https://github.com/yourusername/os-capstone.git
    cd os-capstone
   ```
 
-**Install Dependences**
+### **Install Dependencies**
 
-   ```bash
-   sudo apt update
-   sudo apt install firejail docker.io python3-pip
-   pip3 install -r requirements.txt
-  ```
+#### Install Firejail and Python3 with pip
+``` bash
+sudo apt update
+sudo apt install firejail python3 python3-pip
+```
+
+#### Install Python package(s)
+``` bash
+pip3 install -r requirements.txt
+```
 
 ---
 
-## Running the Simulation
+## Running the Script
 
-**Execute the Main Scipt**
+This script simulates a potential security breach using a fake malicious script. It runs the script twice:
 
-   ```bash
-   python3 sandbox_simulation.py
-  ```
+1. Without any restrictions (unsandboxed)
+2. Inside a Firejail sandbox (sandboxed)
 
+*Each run logs its output to the /logs folder so we can compare what actions were blocked or allowed.*
+
+```bash
+chmod +x bad-script.sh   # only needed once
+python3 sandbox_simulation.py
+```
+
+---
 
 **View Reslts**
 
-*Outputs will be saved to the /visuals folder for use in the final report and presentation.*
+*Visuals will be saved to the /visuals folder for use in the final report and presentation.*
+
+[Insert Visual Examples Here]
 
 
 ## Deliverables
