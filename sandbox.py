@@ -1,5 +1,5 @@
 # sandbox.py (COMPLETED)
-# This file helps us run bad-script.sh with or without sandboxing.
+# This file helps us run bad_script.sh with or without sandboxing.
 # It saves the output of each run in the /logs folder so we can compare results later.
 
 import subprocess # lets us run terminal commands
@@ -38,9 +38,9 @@ def _log_and_run(command, tag):
             return 0, 0  # Fallback
 
 def run_with_firejail():
-    command = ["firejail", "--quiet", "./bad-script.sh"]
+    command = ["firejail", "--quiet", "./bad_script.sh"]
     return _log_and_run(command, "sandboxed")
 
 def run_without_firejail():
-    command = ["./bad-script.sh"]
+    command = ["./bad_script.sh"]
     return _log_and_run(command, "unsandboxed")

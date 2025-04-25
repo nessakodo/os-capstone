@@ -72,7 +72,7 @@ This script simulates a potential security breach using a fake malicious script.
 *Each run logs its output to the /logs folder so we can compare what actions were blocked or allowed.*
 
 ```bash
-chmod +x bad-script.sh   # only needed once
+chmod +x bad_script.sh   # only needed once
 python3 sandbox_simulation.py
 ```
 
