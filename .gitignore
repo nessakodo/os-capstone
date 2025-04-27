@@ -12,12 +12,6 @@ __pycache__/
 .vscode/
 .idea/
 
-# Ignore output folders
-results/
-visuals/*.png
-visuals/*.jpg
-visuals/*.jpeg
-
 # Logs and temp files
 *.log
 
