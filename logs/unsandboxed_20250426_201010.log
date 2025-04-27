@@ -1,0 +1,13 @@
+[ACTION: FILE ACCESS]
+cat: /etc/shadow: Permission denied
+[ACTION: FILE WRITE]
+touch: cannot touch '/etc/test_write.txt': Permission denied
+[ACTION: NETWORK ACCESS]
+PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
+64 bytes from 8.8.8.8: icmp_seq=1 ttl=57 time=8.63 ms
+
+--- 8.8.8.8 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 8.633/8.633/8.633/0.000 ms
+[ACTION: PRIVILEGE ESCALATION]
+hacked.txt
