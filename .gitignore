@@ -1,0 +1,30 @@
+# .gitignore for OS Capstone Project
+
+# Ignore Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore system files
+.DS_Store
+
+# Ignore editor settings
+.vscode/
+.idea/
+
+# Ignore output folders
+results/
+visuals/*.png
+visuals/*.jpg
+visuals/*.jpeg
+
+# Logs and temp files
+*.log
+
+# Ignore any virtual environments (if you make one later)
+venv/
+.env/
+
+# Misc
+*.swp
+*.swo
