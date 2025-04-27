@@ -1,18 +1,6 @@
 #!/bin/bash
-# Simulated malicious actions for sandbox testing (COMPLETED)
+# Launches simulated attack scenarios
 
-# FILE ACCESS
-echo "[ACTION: FILE ACCESS]"
-cat /etc/shadow
-
-# FILE WRITE
-echo "[ACTION: FILE WRITE]"
-touch /etc/test_write.txt
-
-# NETWORK ACCESS
-echo "[ACTION: NETWORK ACCESS]"
-ping -c 1 8.8.8.8
-
-# PRIVILEGE ESCALATION
-echo "[ACTION: PRIVILEGE ESCALATION]"
-sudo ls /root
+echo "[ACTION] Starting attack scenarios..."
+python3 attack_scenarios.py
+echo "[ACTION] Attack scenarios completed."
