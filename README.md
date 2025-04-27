@@ -1,16 +1,28 @@
-# OS Capstone – Securing the System: Sandboxing as a Modern OS Security Mechanism
+Got it —  
+you want your **OS Capstone** README to be **beautifully styled like that** (𝘭𝘪𝘬𝘦 PhishKiller's), matching those fonts, badges, and elegant sections.
 
-A Python-based simulation and visualization project exploring how sandboxing mechanisms in modern operating systems help prevent unauthorized access to system resources through process isolation and restricted execution environments.
-
----
-
-## Project Overview
-
-To demonstrate the behavioral differences between sandboxed and non-sandboxed processes through the use of real-world attack simulations. This project explores how sandboxing mechanisms—specifically using [Firejail](https://github.com/netblue30/firejail) on Ubuntu—enhance operating system security by isolating processes and restricting access to sensitive system resources.
+Here’s your full **refactored README**, in the same **exact style**:
 
 ---
 
-## Team Members
+# 𝘖𝘚 𝘊𝘢𝘱𝘴𝘵𝘰𝘯𝘦 – 𝘚𝘦𝘤𝘶𝘳𝘪𝘯𝘨 𝘵𝘩𝘦 𝘚𝘺𝘴𝘵𝘦𝘮: 𝘚𝘢𝘯𝘥𝘣𝘰𝘹𝘪𝘯𝘨 𝘢𝘴 𝘢 𝘔𝘰𝘥𝘦𝘳𝘯 𝘖𝘚 𝘚𝘦𝘤𝘶𝘳𝘪𝘵𝘺 𝘔𝘦𝘤𝘩𝘢𝘯𝘪𝘴𝘮
+
+![Version](https://img.shields.io/badge/Version-v1-000000?style=for-the-badge&logo=linux&logoColor=white)
+[![Python](https://img.shields.io/badge/Python-000000?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org)
+[![Made by Team Nessa, Killian, Mohammad, Matt](https://img.shields.io/badge/Made%20by-OS%20Capstone%20Team%202-000000?style=for-the-badge)](#)
+
+---
+
+## 𝘖𝘷𝘦𝘳𝘷𝘪𝘦𝘸
+
+A Python-based simulation and visualization project exploring how sandboxing mechanisms help prevent unauthorized access to system resources through **process isolation**, **system call filtering**, and **access control**.
+
+This project showcases how sandboxing—specifically using [Firejail](https://github.com/netblue30/firejail)—enhances operating system security.
+
+---
+
+## 𝘛𝘦𝘢𝘮 𝘔𝘦𝘮𝘣𝘦𝘳𝘴
+
 - Vanessa Benavente  
 - Killian Bertsch  
 - Mohammad Besharat  
@@ -18,79 +30,117 @@ To demonstrate the behavioral differences between sandboxed and non-sandboxed pr
 
 ---
 
-## **Project Scope**  
-Each team member will implement Firejail locally to simulate how sandboxing prevents unauthorized file access, network misuse, and privilege escalation. By running pseudo-malicious scripts in both sandboxed and unrestricted environments, we collect and analyze logs to assess the effectiveness of various isolation techniques.
+## 𝘍𝘦𝘢𝘵𝘶𝘳𝘦𝘴
 
-### This work applies core OS principles:
-- **Process Isolation** – Keeps processes from interfering with one another  
-- **Access Control** – Limits access to files, devices, and commands  
-- **System Call Management** – Filters unsafe syscalls via kernel mechanisms like seccomp  
-- **Resource Management** – Restricts CPU, memory, and I/O usage in sandboxed contexts  
-
-We present visualizations, effectiveness scores, and architecture diagrams to compare sandboxing in Linux (Firejail), Windows (AppContainer), and **(possibly)** Docker.
-
+- Simulates real-world attack scenarios (file, network, privilege escalation)
+- Demonstrates process isolation with and without sandboxing
+- Generates clear visualizations (safe vs unsafe actions)
+- Highlights Linux-based sandboxing technologies (Firejail, seccomp, namespaces)
+- Fully modular Python scripts
 
 ---
 
-## Setup Instructions
+## 𝘚𝘦𝘵𝘶𝘱 𝘐𝘯𝘴𝘵𝘳𝘶𝘤𝘵𝘪𝘰𝘯𝘴
 
-### Prerequisites
+### 𝘙𝘦𝘲𝘶𝘪𝘳𝘦𝘮𝘦𝘯𝘵𝘴
 
-- Ubuntu 20.04 or greater
-- Python 3.x
-- Firejail
+- Ubuntu 20.04+  
+- Python 3.x  
+- Firejail  
+- Matplotlib Python library
 
-### **Clone the Repositry**
+---
 
-   ```bash
-   git clone https://github.com/yourusername/os-capstone.git
-   cd os-capstone
-  ```
+### 𝘊𝘭𝘰𝘯𝘦 𝘵𝘩𝘦 𝘙𝘦𝘱𝘰𝘴𝘪𝘵𝘰𝘳𝘺
 
-### **Install Dependencies**
-
-#### Install Firejail and Python3 with pip
-``` bash
-sudo apt update
-sudo apt install firejail python3 python3-pip
+```bash
+git clone https://github.com/yourusername/os-capstone.git
+cd os-capstone
 ```
 
-#### Install Python package(s)
-``` bash
+---
+
+### 𝘐𝘯𝘴𝘵𝘢𝘭𝘭 𝘋𝘦𝘱𝘦𝘯𝘥𝘦𝘯𝘤𝘪𝘦𝘴
+
+```bash
+sudo apt update
+sudo apt install firejail python3 python3-pip
 pip3 install -r requirements.txt
 ```
 
 ---
 
-## Running the Script
+## 𝘙𝘶𝘯𝘯𝘪𝘯𝘨 𝘵𝘩𝘦 𝘗𝘳𝘰𝘫𝘦𝘤𝘵
 
-This script simulates a potential security breach using a fake malicious script. It runs the script twice:
+### 𝘈𝘵𝘵𝘢𝘤𝘬 𝘚𝘤𝘦𝘯𝘢𝘳𝘪𝘰𝘴
 
-1. Without any restrictions (unsandboxed)
-2. Inside a Firejail sandbox (sandboxed)
-
-*Each run logs its output to the /logs folder so we can compare what actions were blocked or allowed.*
+Simulate attacks (unsandboxed):
 
 ```bash
-chmod +x bad_script.sh   # only needed once
-python3 sandbox_simulation.py
+python3 bad_script.sh
 ```
+
+Simulate attacks (sandboxed):
+
+```bash
+firejail bash bad_script.sh
+```
+
+Logs will appear in the `/results/` folder.
 
 ---
 
-**View Reslts**
+### 𝘔𝘢𝘯𝘶𝘢𝘭 𝘊𝘰𝘮𝘮𝘢𝘯𝘥 𝘛𝘦𝘴𝘵𝘪𝘯𝘨
 
-*Visuals will be saved to the /visuals folder for use in the final report and presentation.*
+Check any command manually:
 
-[Insert Visual Examples Here]
+```bash
+python3 test.py ls -la
+```
+
+Or, if no command is given, run preset attack tests and generate a **visual summary**:
+
+```bash
+python3 test.py
+```
+
+Generated charts will be saved to `/visuals/`.
+
+---
+
+## 𝘋𝘦𝘭𝘪𝘷𝘦𝘳𝘢𝘣𝘭𝘦𝘴
+
+- Full Source Code
+- Attack Scenario Logs (`/results/`)
+- Visual Summaries (`/visuals/`)
+- [Capstone Presentation Slides](https://olucdenver-my.sharepoint.com/:p:/g/personal/vanessa_benavente_ucdenver_edu/EdDpQnrzFnlJigiEMT-agQ8B8_FfiwXYSOkmdRw0xIx8AA?e=jwRJB0)
+- [Research Report](https://docs.google.com/document/d/1F-AweAtG0pEalSz2Hs1eE6Vv7kvXwJZo6tNyZNBZ-HE/edit?tab=t.0)
+
+---
+
+## 𝘚𝘢𝘮𝘱𝘭𝘦 𝘖𝘶𝘵𝘱𝘶𝘵 (𝘊𝘖𝘔𝘐𝘕𝘎 𝘚𝘖𝘖𝘕)
+
+Example bar chart comparing safe vs unsafe actions here and soon to be replaced by a more accurate one.
+![bar chart](/src/Images/read-me.png)
 
 
-## Deliverables
+---
 
-**Full Source Code** (in this repo)
+## 𝘗𝘳𝘰𝘫𝘦𝘤𝘵 𝘛𝘩𝘦𝘮𝘦
 
-**Matplotlib-based Visualization Outputs** (in /visuals)
+This project explores:
 
-**Presentation Slides:** [Capstone Powerpoint](https://olucdenver-my.sharepoint.com/:p:/g/personal/vanessa_benavente_ucdenver_edu/EdDpQnrzFnlJigiEMT-agQ8B8_FfiwXYSOkmdRw0xIx8AA?e=jwRJB0)
+- **Process Isolation**
+- **Access Control**
+- **System Call Filtering**
+- **Privilege Containment**
 
-**Project Report:** [Research Report](https://docs.google.com/document/d/1F-AweAtG0pEalSz2Hs1eE6Vv7kvXwJZo6tNyZNBZ-HE/edit?tab=t.0)
+This project highlights how sandboxing improves operating system security by enforcing process isolation and access control, while also addressing real-world limitations like performance overhead. It connects these concepts to modern OS trends such as containerization (e.g., Docker) and lightweight virtualization with microVMs (e.g., Firecracker), demonstrating how operating systems continue to evolve to manage processes more securely and efficiently.
+
+---
+
+## 𝘊𝘳𝘦𝘥𝘪𝘵𝘴
+
+Developed by the Group #2 OS Capstone Team for CSCI 3453 with concept structure and visualization flow assisted by ChatGPT.  
+
+---
