@@ -33,7 +33,7 @@ def check_command_safety(command):
     
 # Adding placeholder for plotting (Killian's implementation to be merged here)
 
-# simple bar chart
+# simple bar chart example
 # def visualize_results(results):
 #     """Creates a simple bar chart showing safe vs unsafe commands."""
 #     labels = ['Safe', 'Unsafe']
@@ -46,7 +46,7 @@ def check_command_safety(command):
 #     plt.savefig('visuals/test_summary.png')
 #     plt.show()
 
-# fancy bar chart
+# fancy color custom bar chart example
 def visualize_results(results):
     """Plot Safe vs Unsafe command results as a clean bar chart."""
     os.makedirs('visuals', exist_ok=True)

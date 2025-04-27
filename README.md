@@ -137,6 +137,6 @@ This project highlights how sandboxing improves operating system security by enf
 
 ## 𝘊𝘳𝘦𝘥𝘪𝘵𝘴
 
-Developed by the Group #2 OS Capstone Team for CSCI 3453 with concept structure and visualization flow assisted by ChatGPT.  
+Developed by the OS Capstone Team Group #2 with concept structure and visualization flow assisted by ChatGPT.  
 
 ---
