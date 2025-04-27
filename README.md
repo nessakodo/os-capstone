@@ -121,7 +121,8 @@ Generated charts will be saved to `/visuals/`.
 ## 𝘚𝘢𝘮𝘱𝘭𝘦 𝘖𝘶𝘵𝘱𝘶𝘵 (𝘊𝘖𝘔𝘐𝘕𝘎 𝘚𝘖𝘖𝘕)
 
 Example bar chart comparing safe vs unsafe actions here and soon to be replaced by a more accurate one.
-![bar chart](/src/Images/read-me.png)
+![bar chart](./assets/output_chart.png)
+![terminal output](./assets/output_sumamry.png)
 
 
 ---
