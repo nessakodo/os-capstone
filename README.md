@@ -1,10 +1,3 @@
-Got it —  
-you want your **OS Capstone** README to be **beautifully styled like that** (𝘭𝘪𝘬𝘦 PhishKiller's), matching those fonts, badges, and elegant sections.
-
-Here’s your full **refactored README**, in the same **exact style**:
-
----
-
 # 𝘖𝘚 𝘊𝘢𝘱𝘴𝘵𝘰𝘯𝘦 – 𝘚𝘦𝘤𝘶𝘳𝘪𝘯𝘨 𝘵𝘩𝘦 𝘚𝘺𝘴𝘵𝘦𝘮: 𝘚𝘢𝘯𝘥𝘣𝘰𝘹𝘪𝘯𝘨 𝘢𝘴 𝘢 𝘔𝘰𝘥𝘦𝘳𝘯 𝘖𝘚 𝘚𝘦𝘤𝘶𝘳𝘪𝘵𝘺 𝘔𝘦𝘤𝘩𝘢𝘯𝘪𝘴𝘮
 
 ![Version](https://img.shields.io/badge/Version-v1-000000?style=for-the-badge&logo=linux&logoColor=white)
