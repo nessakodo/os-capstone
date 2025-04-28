@@ -139,20 +139,20 @@ def visualize_performance(performance_results):
                         xytext=(0, 3),  # 3 points vertical offset
                         textcoords="offset points",
                         ha='center', va='bottom', fontsize=8)
-    
+
     add_labels(sandbox_bars)
     add_labels(direct_bars)
-    
+
     # Add a second plot for percentage overhead
     fig2, ax2 = plt.subplots(figsize=(10, 5))
     percentage_bars = ax2.bar(commands, performance_results["time_percentage"], 
-                             color='#FF9800', edgecolor='black')
-    
+                                color='#FF9800', edgecolor='black')
+
     ax2.set_xlabel('Commands')
     ax2.set_ylabel('Overhead Percentage (%)')
     ax2.set_title('Percentage Overhead of Sandboxing', fontsize=16, weight='bold')
     ax2.set_xticklabels(commands, rotation=45, ha='right')
-    
+
     # Add value labels for percentage bars
     for bar in percentage_bars:
         height = bar.get_height()
@@ -161,14 +161,14 @@ def visualize_performance(performance_results):
                     xytext=(0, 3),
                     textcoords="offset points",
                     ha='center', va='bottom')
-    
+
     fig.tight_layout()
     fig2.tight_layout()
-    
+
     # Save plots
     fig.savefig('visuals/execution_time_comparison.png')
     fig2.savefig('visuals/sandbox_overhead_percentage.png')
-    
+
     plt.show()
 
 if __name__ == "__main__":
@@ -222,42 +222,44 @@ if __name__ == "__main__":
 
 
     # In the main execution block where you run example commands
-performance_results = {"command": [], "sandbox_time": [], "direct_time": [], "time_difference": [], "time_percentage": []}
+    performance_results = {"command": [], "sandbox_time": [], "direct_time": [], "time_difference": [], "time_percentage": []}
 
-for cmd in example_commands:
-    print(f"\n[TESTING]: {' '.join(cmd)}")
-    
-    # Test with sandbox
-    sandbox_time, sandbox_success, sandbox_result = time_command_execution(cmd, use_sandbox=True)
-    print(f"   -> Sandbox execution: {'SUCCESS' if sandbox_success else 'FAILED'} (Time: {sandbox_time:.4f}s)")
-    
-    # Only test without sandbox if the command is safe (to avoid security issues)
-    if sandbox_success:
-        direct_time, direct_success, direct_result = time_command_execution(cmd, use_sandbox=False)
-        print(f"   -> Direct execution: {'SUCCESS' if direct_success else 'FAILED'} (Time: {direct_time:.4f}s)")
+    for cmd in example_commands:
+        print(f"\n[TESTING]: {' '.join(cmd)}")
         
-        # Calculate difference and percentage overhead
-        time_diff = sandbox_time - direct_time
-        if direct_time > 0:  # Avoid division by zero
-            percentage = (time_diff / direct_time) * 100
+        # Test with sandbox
+        sandbox_time, sandbox_success, sandbox_result = time_command_execution(cmd, use_sandbox=True)
+        print(f"   -> Sandbox execution: {'SUCCESS' if sandbox_success else 'FAILED'} (Time: {sandbox_time:.4f}s)")
+        
+        # Only test without sandbox if the command is safe (to avoid security issues)
+        if sandbox_success:
+            direct_time, direct_success, direct_result = time_command_execution(cmd, use_sandbox=False)
+            print(f"   -> Direct execution: {'SUCCESS' if direct_success else 'FAILED'} (Time: {direct_time:.4f}s)")
+            
+            # Calculate difference and percentage overhead
+            time_diff = sandbox_time - direct_time
+            if direct_time > 0:  # Avoid division by zero
+                percentage = (time_diff / direct_time) * 100
+            else:
+                percentage = 0
+            
+            print(f"   -> Sandbox overhead: {time_diff:.4f}s ({percentage:.2f}%)")
+            
+            # Store results for visualization
+            performance_results["command"].append(' '.join(cmd))
+            performance_results["sandbox_time"].append(sandbox_time)
+            performance_results["direct_time"].append(direct_time)
+            performance_results["time_difference"].append(time_diff)
+            performance_results["time_percentage"].append(percentage)
         else:
-            percentage = 0
-        
-        print(f"   -> Sandbox overhead: {time_diff:.4f}s ({percentage:.2f}%)")
-        
-        # Store results for visualization
-        performance_results["command"].append(' '.join(cmd))
-        performance_results["sandbox_time"].append(sandbox_time)
-        performance_results["direct_time"].append(direct_time)
-        performance_results["time_difference"].append(time_diff)
-        performance_results["time_percentage"].append(percentage)
-    else:
-        print("   -> Direct execution: SKIPPED (unsafe command)")
-        
-    # Update safe/unsafe counts as before
-    if sandbox_success:
-        results['safe'] += 1
-        print("   -> Result: SAFE ✅")
-    else:
-        results['unsafe'] += 1
-        print("   -> Result: BLOCKED/UNSAFE ❌")
+            print("   -> Direct execution: SKIPPED (unsafe command)")
+            
+        # Update safe/unsafe counts as before
+        if sandbox_success:
+            results['safe'] += 1
+            print("   -> Result: SAFE ✅")
+        else:
+            results['unsafe'] += 1
+            print("   -> Result: BLOCKED/UNSAFE ❌")
+
+    visualize_performance(performance_results)
