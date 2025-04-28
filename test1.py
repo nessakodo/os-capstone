@@ -100,6 +100,77 @@ def visualize_results(results):
     plt.savefig('visuals/test_summary.png')
     plt.show()
 
+def visualize_performance(performance_results):
+    """Create a bar chart comparing sandbox vs direct execution times"""
+    if not performance_results["command"]:
+        print("No performance data to visualize.")
+        return
+    
+    os.makedirs('visuals', exist_ok=True)
+    
+    # Create figure with appropriate size
+    fig, ax = plt.subplots(figsize=(10, 6))
+    
+    # Set up bar positions
+    commands = performance_results["command"]
+    x = range(len(commands))
+    width = 0.35
+    
+    # Create bars
+    sandbox_bars = ax.bar([i - width/2 for i in x], performance_results["sandbox_time"], 
+                         width, label='With Sandbox', color='#4CAF50', edgecolor='black')
+    direct_bars = ax.bar([i + width/2 for i in x], performance_results["direct_time"], 
+                        width, label='Without Sandbox', color='#2196F3', edgecolor='black')
+    
+    # Add labels and title
+    ax.set_xlabel('Commands')
+    ax.set_ylabel('Execution Time (seconds)')
+    ax.set_title('Performance Impact of Sandboxing', fontsize=16, weight='bold')
+    ax.set_xticks(x)
+    ax.set_xticklabels(commands, rotation=45, ha='right')
+    ax.legend()
+    
+    # Add value labels on top of bars
+    def add_labels(bars):
+        for bar in bars:
+            height = bar.get_height()
+            ax.annotate(f'{height:.4f}s',
+                        xy=(bar.get_x() + bar.get_width() / 2, height),
+                        xytext=(0, 3),  # 3 points vertical offset
+                        textcoords="offset points",
+                        ha='center', va='bottom', fontsize=8)
+    
+    add_labels(sandbox_bars)
+    add_labels(direct_bars)
+    
+    # Add a second plot for percentage overhead
+    fig2, ax2 = plt.subplots(figsize=(10, 5))
+    percentage_bars = ax2.bar(commands, performance_results["time_percentage"], 
+                             color='#FF9800', edgecolor='black')
+    
+    ax2.set_xlabel('Commands')
+    ax2.set_ylabel('Overhead Percentage (%)')
+    ax2.set_title('Percentage Overhead of Sandboxing', fontsize=16, weight='bold')
+    ax2.set_xticklabels(commands, rotation=45, ha='right')
+    
+    # Add value labels for percentage bars
+    for bar in percentage_bars:
+        height = bar.get_height()
+        ax2.annotate(f'{height:.2f}%',
+                    xy=(bar.get_x() + bar.get_width() / 2, height),
+                    xytext=(0, 3),
+                    textcoords="offset points",
+                    ha='center', va='bottom')
+    
+    fig.tight_layout()
+    fig2.tight_layout()
+    
+    # Save plots
+    fig.savefig('visuals/execution_time_comparison.png')
+    fig2.savefig('visuals/sandbox_overhead_percentage.png')
+    
+    plt.show()
+
 if __name__ == "__main__":
 
     
