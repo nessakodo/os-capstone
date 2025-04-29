@@ -35,52 +35,80 @@ def run_command(command, use_firejail=False):
     else:
         cmd = command
 
-    # Record CPU usage before execution
     cpu_before = psutil.cpu_percent(interval=None)
-
     start_time = time.time()
+
     try:
-        subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=10)
-        success = True
+        result = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=10)
+        success = result.returncode == 0
+        error_msg = result.stderr.decode().strip()
     except Exception as e:
         success = False
-    end_time = time.time()
+        error_msg = str(e)
 
-    # Record CPU usage after execution
+    end_time = time.time()
     cpu_after = psutil.cpu_percent(interval=None)
 
     execution_time = end_time - start_time
     cpu_usage = cpu_after - cpu_before
 
-    return execution_time, cpu_usage, success
+    return execution_time, cpu_usage, success, error_msg
 
 # Execute each command in both environments
+print("\n====== FIREJAIL SANDBOXING COMPARISON ======\n")
+
 for cmd in commands:
     cmd_str = ' '.join(cmd)
-    print(f"Testing command: {cmd_str}")
+    print(f"[COMMAND]: {cmd_str}")
+    print("-" * 60)
 
     # Run without Firejail
-    direct_time, direct_cpu, direct_success = run_command(cmd, use_firejail=False)
-    print(f"  Without Firejail - Time: {direct_time:.4f}s, CPU: {direct_cpu:.2f}%")
+    direct_time, direct_cpu, direct_success, direct_error = run_command(cmd, use_firejail=False)
+    direct_status = "PASS ✅" if direct_success else "FAIL ❌"
+    print(f"WITHOUT FIREJAIL")
+    print(f"  Time      : {direct_time:.4f}s")
+    print(f"  CPU Usage : {direct_cpu:.2f}%")
+    print(f"  Status    : {direct_status}")
+    if not direct_success:
+        print(f"  Error     : {direct_error}")
+
+    print()
 
     # Run with Firejail
-    sandbox_time, sandbox_cpu, sandbox_success = run_command(cmd, use_firejail=True)
-    print(f"  With Firejail    - Time: {sandbox_time:.4f}s, CPU: {sandbox_cpu:.2f}%")
+    sandbox_time, sandbox_cpu, sandbox_success, sandbox_error = run_command(cmd, use_firejail=True)
+    sandbox_status = "PASS ✅" if sandbox_success else "BLOCKED ❌"
+    print(f"WITH FIREJAIL")
+    print(f"  Time      : {sandbox_time:.4f}s")
+    print(f"  CPU Usage : {sandbox_cpu:.2f}%")
+    print(f"  Status    : {sandbox_status}")
+    if not sandbox_success:
+        print(f"  Error     : {sandbox_error}")
 
-    # Calculate differences
+    # Handle edge cases
+    if not direct_success and not sandbox_success:
+        print("\n[NOTE] Command failed in both environments — may require root or unsupported resource.\n")
+    elif direct_cpu == 0 or sandbox_cpu == 0:
+        print("\n[NOTE] CPU usage reported as 0% — this often happens for very fast commands. Consider repeating or using heavier workloads.\n")
+
+    # Calculate differences safely
     time_diff = sandbox_time - direct_time
-    cpu_diff = sandbox_cpu - direct_cpu
     time_pct = (time_diff / direct_time * 100) if direct_time > 0 else 0
+    cpu_diff = sandbox_cpu - direct_cpu
     cpu_pct = (cpu_diff / direct_cpu * 100) if direct_cpu > 0 else 0
 
-    # Store results
+    print("OVERHEAD ANALYSIS")
+    print(f"  Time Overhead : {time_diff:.4f}s ({time_pct:.2f}%)")
+    print(f"  CPU Difference: {cpu_diff:.2f}% ({cpu_pct:.2f}%)")
+    print("=" * 60 + "\n")
+
+    # Store results (with fallback to 0.0 if command fails)
     results["command"].append(cmd_str)
-    results["sandbox_time"].append(sandbox_time)
-    results["direct_time"].append(direct_time)
+    results["sandbox_time"].append(sandbox_time if sandbox_success else 0.0)
+    results["direct_time"].append(direct_time if direct_success else 0.0)
     results["time_difference"].append(time_diff)
     results["time_percentage"].append(time_pct)
-    results["sandbox_cpu"].append(sandbox_cpu)
-    results["direct_cpu"].append(direct_cpu)
+    results["sandbox_cpu"].append(sandbox_cpu if sandbox_success else 0.0)
+    results["direct_cpu"].append(direct_cpu if direct_success else 0.0)
     results["cpu_difference"].append(cpu_diff)
     results["cpu_percentage"].append(cpu_pct)
 
