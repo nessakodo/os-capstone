@@ -1,5 +1,5 @@
 # attack_scenarios.py
-# Simulated attack attempts for OS Capstone Project, based on GPT-generated scaffolding
+# Simulated attack attempts for OS Capstone Project (not use in main implementation)
 
 import os
 import subprocess

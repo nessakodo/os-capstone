@@ -1,3 +1,7 @@
+# project.py
+# CLI-based sandbox testing script for OS Capstone Project
+
+# Imports
 import subprocess
 import time
 import psutil
@@ -26,6 +30,7 @@ results = {
     "cpu_percentage": []
 }
 
+# Function to run commands with or without Firejail
 def run_command(command, use_firejail=False, command_iterations=300):
     """
     Executes a command with or without Firejail and measures execution time and CPU usage.
